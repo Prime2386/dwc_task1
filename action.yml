@@ -1,0 +1,27 @@
+name:dwc_test_cli_action
+
+inputs:
+   client_id:
+      description:"id of client/user"
+      required:true
+   client_secret:
+      description: " alphanumeric password client/user"
+      required:true
+   authorization_url:
+      description: " authorzatizing organization"
+      required:true
+   token_url:
+      description:" token url"
+      required:true
+   access_token:
+      description:"system generated acces tocken "
+      required:true
+   refresh_token:
+      description:"refresh token"
+      required: true
+runs:
+using:"docker"
+image:"Dockerfile"
+args:
+ -${{inputs.command}}
+
