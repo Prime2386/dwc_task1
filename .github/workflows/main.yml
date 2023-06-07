@@ -1,0 +1,31 @@
+name: CLI Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/action_v2
+        with:
+          node-version: 18.16.0
+
+      - name: Build Docker image
+        run: docker build -t mycli .
+
+      - name: Run CLI command
+        run: |
+          docker run \
+            -e client_id=${{ secrets.CLIENT_ID }} \
+            -e client_secret=${{ secrets.CLIENT_SECRET }} \
+	    -e authorization_url=${{secrets.AUTHORIZATION_URL}}\
+	    -e token_url=${{secrets.TOKEN_URL}}\				
+            mycli <command>
