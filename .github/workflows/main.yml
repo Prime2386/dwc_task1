@@ -22,7 +22,7 @@ jobs:
         run: docker build -t mycli .
 
       - name: Run CLI command
-        run: |
+        run: 
           docker run \
             -e client_id=${{ secrets.CLIENT_ID }} \
             -e client_secret=${{ secrets.CLIENT_SECRET }} \
