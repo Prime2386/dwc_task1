@@ -28,5 +28,5 @@ jobs:
             -e client_secret=${{ secrets.CLIENT_SECRET }} \
             -e authorization_url=${{ secrets.AUTHORIZATION_URL }} \
             -e token_url=${{ secrets.TOKEN_URL }} \
-            mycli <command>
+            mycli "DWC spaces read -S SAP_DATASPHERE_DWC -H "https://invenics.eu10.hcs.cloud.sap/dwaas-ui/index.html#/databuilder&/db/SAP_DATASPHERE_DWC/Ravi_Employee_Details1" -m"
 
