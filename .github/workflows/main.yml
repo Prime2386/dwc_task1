@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/action_v2
+        uses: actions/setup-node@v2
         with:
           node-version: 18.16.0
 
@@ -22,10 +22,11 @@ jobs:
         run: docker build -t mycli .
 
       - name: Run CLI command
-        run: 
+        run: |
           docker run \
             -e client_id=${{ secrets.CLIENT_ID }} \
             -e client_secret=${{ secrets.CLIENT_SECRET }} \
-	    -e authorization_url=${{secrets.AUTHORIZATION_URL}}\
-	    -e token_url=${{secrets.TOKEN_URL}}\				
+            -e authorization_url=${{ secrets.AUTHORIZATION_URL }} \
+            -e token_url=${{ secrets.TOKEN_URL }} \
             mycli <command>
+
